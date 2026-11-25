@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aurevant — Haute Horlogerie Since 1887</title>
+  <meta name="description" content="Aurevant. Swiss haute horlogerie from the Vallée de Joux. Each watch is made once, by one hand, for one name.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" id="prog" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="mark" href="index.html">Aurevant</a>
+  <nav class="nav-links" id="navLinks">
+    <a class="nav-link active" href="index.html">Home</a>
+    <a class="nav-link" href="collection.html">Collection</a>
+    <a class="nav-link" href="heritage.html">Heritage</a>
+    <a class="nav-link" href="atelier.html">Atelier</a>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main>
+<section class="story" id="story" aria-label="The story of one Aurevant watch">
+  <div class="stage" id="stage">
+    <canvas id="cv" aria-hidden="true"></canvas>
+    <div class="vig"></div>
+    <div class="scrim"></div>
+    <div class="chap chap-stage" id="chap" aria-live="off">Prologue</div>
+
+    <div class="panels">
+      <article class="panel hero" data-a="0" data-b="0.15">
+        <div class="eyebrow"><i></i>Maison d'horlogerie · Vallée de Joux · 1887</div>
+        <h1><span class="line"><span>Some hours are</span></span><span class="line"><span>made <em>once.</em></span></span></h1>
+        <p>Follow a single watch from a Swiss mountain to your wrist. Scroll slowly.</p>
+      </article>
+
+      <article class="panel" data-a="0.15" data-b="0.35">
+        <div class="eyebrow">I<i></i>The valley</div>
+        <h2>In the winter of 1887, a clockmaker stopped <em>counting.</em></h2>
+        <p>Étienne Aurevant climbed above the snowline with one question: what if a watch were made to be inherited, not replaced? He wintered in a stone workshop. By the thaw, one movement lay on his bench.</p>
+      </article>
+
+      <article class="panel" data-a="0.35" data-b="0.57">
+        <div class="eyebrow">II<i></i>The hands</div>
+        <h2>Six hundred and twelve parts. One pair of <em>hands.</em></h2>
+        <p>Every bridge is bevelled and polished by hand. Every screw is blued over a flame. No two movements are finished on the same day.</p>
+        <div class="stats">
+          <div><b data-n="612">612</b><span>Components</span></div>
+          <div><b data-n="14">14</b><span>Months</span></div>
+          <div><b data-n="1">1</b><span>Watchmaker</span></div>
+        </div>
+      </article>
+
+      <article class="panel" data-a="0.57" data-b="0.775">
+        <div class="eyebrow">III<i></i>The dial</div>
+        <h2>A face that <em>remembers</em> the sky.</h2>
+        <p>Grand feu enamel, fired five times. A moonphase that drifts by a single day only once in 122 years. The hands rest at ten past ten, so the dial seems to smile.</p>
+      </article>
+
+      <article class="panel" data-a="0.775" data-b="0.865">
+        <div class="eyebrow">IV<i></i>The night</div>
+        <h2>When the room goes dark, it <em>keeps</em> time.</h2>
+        <p>Every index is lit by hand, one drop at a time. You will not need to look. You will know.</p>
+      </article>
+
+      <article class="panel" data-a="0.915" data-b="1">
+        <div class="eyebrow">V<i></i>The promise</div>
+        <h2>Wear it for a lifetime. Then <em>hand it on.</em></h2>
+        <p>The atelier that made your watch services it for as long as it runs. We keep the ledger. Your name goes in it, and so does the next.</p>
+        <div class="actions">
+          <a class="btn solid" href="atelier.html">Arrange a private viewing</a>
+          <a class="btn" href="#collection" data-go="collection">See the collection</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="cue" id="cue">Scroll</div>
+  </div>
+</section>
+
+<section class="collection" id="collection">
+  <div class="eyebrow"><i></i>The collection</div>
+  <h2 class="big">Three hours. Twenty-four <em>each.</em></h2>
+  <p class="lede">Each reference is named for a moment of the day and limited to twenty-four pieces. When an edition is complete, the dies are retired.</p>
+  <div class="cards">
+    <article class="card watch-card-3d reveal reveal-up">
+      <div class="face">
+        <div class="watch-image">
+          <img src="https://images.unsplash.com/photo-1587836374828-4dbafa94cf0e?w=600&h=600&fit=crop&crop=center" alt="Nox — Moonphase rose gold watch with midnight enamel dial" loading="lazy">
+          <div class="watch-reflection" aria-hidden="true"></div>
+          <div class="watch-glare" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="meta"><h3>Nox</h3><small>Edition of 24</small></div>
+      <p class="spec">Moonphase · 40 mm · 18k rose gold<br>Midnight enamel dial</p>
+    </article>
+    <article class="card watch-card-3d reveal reveal-up" style="--reveal-delay: 0.15s">
+      <div class="face">
+        <div class="watch-image">
+          <img src="https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=600&h=600&fit=crop&crop=center" alt="Aube — Time only platinum watch with ivory enamel dial" loading="lazy">
+          <div class="watch-reflection" aria-hidden="true"></div>
+          <div class="watch-glare" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="meta"><h3>Aube</h3><small>Edition of 24</small></div>
+      <p class="spec">Time only · 38 mm · platinum 950<br>Ivory enamel dial</p>
+    </article>
+    <article class="card watch-card-3d reveal reveal-up" style="--reveal-delay: 0.3s">
+      <div class="face">
+        <div class="watch-image">
+          <img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=600&h=600&fit=crop&crop=center" alt="Midi — Small seconds yellow gold watch with forest enamel dial" loading="lazy">
+          <div class="watch-reflection" aria-hidden="true"></div>
+          <div class="watch-glare" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="meta"><h3>Midi</h3><small>Edition of 24</small></div>
+      <p class="spec">Small seconds · 39 mm · 18k yellow gold<br>Forest enamel dial</p>
+    </article>
+  </div>
+  <div class="actions" style="justify-content:center; margin-top: 56px">
+    <a class="btn solid" href="collection.html">View Full Collection</a>
+  </div>
+</section>
+
+<section class="atelier" id="atelier">
+  <div class="eyebrow"><i></i>The atelier</div>
+  <h2 class="big">Come up the <em>mountain.</em></h2>
+  <p class="lede">Viewings are private and unhurried. You will meet the watchmaker who will build yours, and you will leave with nothing but a date.</p>
+  <div class="details">
+    <div><h4>Where</h4><p>Atelier Aurevant<br>Le Sentier, Vallée de Joux</p></div>
+    <div><h4>When</h4><p>Tuesday to Saturday<br>By appointment only</p></div>
+    <div><h4>Waiting time</h4><p>Fourteen months from the day<br>you choose your dial</p></div>
+  </div>
+  <div class="actions" style="margin-top: 40px">
+    <a class="btn solid" href="atelier.html">Visit the Atelier</a>
+    <a class="btn" href="heritage.html">Our Heritage</a>
+  </div>
+  <div class="word" aria-hidden="true">Aurevant</div>
+  <footer>
+    <span>© Aurevant. A fictional maison, made as a design showcase.</span>
+    <span>Le Sentier · 46.61° N · 6.23° E</span>
+  </footer>
+</section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

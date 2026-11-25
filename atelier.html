@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Atelier — Aurevant</title>
+  <meta name="description" content="Visit the Aurevant atelier in the Vallée de Joux. Private viewings by appointment. Meet the watchmaker who will build yours.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <a class="mark" href="index.html">Aurevant</a>
+  <nav class="nav-links" id="navLinks">
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="collection.html">Collection</a>
+    <a class="nav-link" href="heritage.html">Heritage</a>
+    <a class="nav-link active" href="atelier.html">Atelier</a>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="page-hero page-hero-atelier">
+    <div class="page-hero-bg parallax" style="background-image: url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1600&h=900&fit=crop&crop=center')"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content reveal reveal-up">
+      <div class="eyebrow"><i></i>The Atelier</div>
+      <h1>Come up the <em>mountain.</em></h1>
+      <p class="lede">Viewings are private and unhurried. You will meet the watchmaker who will build yours, and you will leave with nothing but a date.</p>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="atelier-gallery" id="gallery">
+    <div class="eyebrow"><i></i>The Workshop</div>
+    <h2 class="big reveal reveal-up">Where patience becomes <em>precision.</em></h2>
+    <p class="lede reveal reveal-up">The atelier sits above Le Sentier in the Vallée de Joux, where the light is constant and the air is still. Each bench holds one watchmaker's lifetime of tools.</p>
+
+    <div class="gallery-grid">
+      <div class="gallery-item gallery-item-wide reveal reveal-up">
+        <img src="https://images.unsplash.com/photo-1620121692029-d088224ddc74?w=1200&h=600&fit=crop&crop=center" alt="Watch movement with intricate gears and jewels" loading="lazy">
+        <div class="gallery-caption">612 components, assembled by one pair of hands</div>
+      </div>
+      <div class="gallery-item reveal reveal-left">
+        <img src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=600&h=600&fit=crop&crop=center" alt="Watchmaker at work with loupe" loading="lazy">
+        <div class="gallery-caption">Each screw is blued over a flame</div>
+      </div>
+      <div class="gallery-item reveal reveal-right">
+        <img src="https://images.unsplash.com/photo-1509281373149-e957c6296406?w=600&h=600&fit=crop&crop=center" alt="Vallée de Joux mountain landscape" loading="lazy">
+        <div class="gallery-caption">The Vallée de Joux, home since 1887</div>
+      </div>
+      <div class="gallery-item reveal reveal-left">
+        <img src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade?w=600&h=600&fit=crop&crop=center" alt="Watch dial close-up showing enamel detail" loading="lazy">
+        <div class="gallery-caption">Grand feu enamel, fired five times</div>
+      </div>
+      <div class="gallery-item reveal reveal-right">
+        <img src="https://images.unsplash.com/photo-1612817159949-195b6eb9e31a?w=600&h=400&fit=crop&crop=center" alt="Watchmaker's bench with precision tools" loading="lazy">
+        <div class="gallery-caption">Tools passed down through three generations</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit Info -->
+  <section class="atelier-visit" id="visit">
+    <div class="visit-grid">
+      <div class="visit-info reveal reveal-left">
+        <div class="eyebrow"><i></i>Visit Us</div>
+        <h2 class="big">The door is always <em>open.</em></h2>
+        <p class="lede">By appointment only. We prefer to meet before we build. Come with questions, leave with certainty.</p>
+
+        <div class="visit-details">
+          <div class="visit-detail">
+            <h4>Where</h4>
+            <p>Atelier Aurevant<br>Le Sentier, Vallée de Joux<br>Switzerland</p>
+          </div>
+          <div class="visit-detail">
+            <h4>When</h4>
+            <p>Tuesday to Saturday<br>By appointment only<br>Allow two unhurried hours</p>
+          </div>
+          <div class="visit-detail">
+            <h4>Waiting Time</h4>
+            <p>Fourteen months from the day<br>you choose your dial</p>
+          </div>
+        </div>
+
+        <div class="mail">
+          <code>atelier@aurevant.example</code>
+          <button class="btn" id="copy" type="button">Copy address</button>
+          <span class="toast" id="toast" role="status"></span>
+        </div>
+      </div>
+
+      <div class="visit-form-wrap reveal reveal-right">
+        <div class="visit-form-card">
+          <h3>Request a Viewing</h3>
+          <p class="form-subtitle">We respond within forty-eight hours.</p>
+          <form class="visit-form" id="visitForm" onsubmit="return false;">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone <span class="optional">(optional)</span></label>
+              <input type="tel" id="phone" name="phone" placeholder="+41 ...">
+            </div>
+            <div class="form-group">
+              <label for="interest">Reference of Interest</label>
+              <select id="interest" name="interest">
+                <option value="">I'm not yet sure</option>
+                <option value="nox">Nox — Moonphase · Rose Gold</option>
+                <option value="aube">Aube — Time Only · Platinum</option>
+                <option value="midi">Midi — Small Seconds · Yellow Gold</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message <span class="optional">(optional)</span></label>
+              <textarea id="message" name="message" rows="4" placeholder="Any questions or preferred dates..."></textarea>
+            </div>
+            <button class="btn solid" type="submit" style="width: 100%; text-align: center;">Send Request</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map placeholder -->
+  <section class="atelier-location reveal reveal-up">
+    <div class="location-card">
+      <div class="location-coords">
+        <span class="location-label">Coordinates</span>
+        <span class="location-value">46.6098° N, 6.2338° E</span>
+      </div>
+      <div class="location-coords">
+        <span class="location-label">Altitude</span>
+        <span class="location-value">1,004 metres</span>
+      </div>
+      <div class="location-coords">
+        <span class="location-label">Established</span>
+        <span class="location-value">1887</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section class="atelier-footer">
+    <div class="word" aria-hidden="true">Atelier</div>
+    <footer>
+      <span>© Aurevant. A fictional maison, made as a design showcase.</span>
+      <span>Le Sentier · 46.61° N · 6.23° E</span>
+    </footer>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
