@@ -49,7 +49,7 @@
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       mobile = W < 760;
-      if (mobile) { R = Math.min(W * 0.3, H * 0.2); F = { x: W / 2, y: H * 0.33 }; }
+      if (mobile) { R = Math.min(W * 0.27, H * 0.175); F = { x: W / 2, y: H * 0.30 }; }
       else { R = Math.min(W * 0.2, H * 0.27); F = { x: W * 0.68, y: H * 0.5 }; }
     }
 
@@ -532,9 +532,10 @@
   }
 
   /* =========================================================
-     3. 3D Mouse-Tracking Tilt & Glare on Watch Cards
+     3. 3D Mouse-Tracking Tilt & Glare on Watch Cards (desktop pointer only)
      ========================================================= */
-  if (!reduce) {
+  const canHover = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (!reduce && canHover) {
     document.querySelectorAll('.watch-card-3d').forEach(card => {
       let rafId = null;
       let targetRx = 0, targetRy = 0, gx = 50, gy = 30;
@@ -564,6 +565,25 @@
       card.addEventListener('mouseleave', () => {
         targetRx = 0; targetRy = 0; gx = 50; gy = 30;
         if (!rafId) rafId = requestAnimationFrame(applyTilt);
+      });
+    });
+  }
+
+  /* =========================================================
+     3b. Collection Category Filter (collection.html)
+     ========================================================= */
+  const filterBtns = document.querySelectorAll('[data-filter]');
+  const featureCards = document.querySelectorAll('.collection-feature[data-category]');
+  if (filterBtns.length && featureCards.length) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const cat = btn.dataset.filter;
+        filterBtns.forEach(b => b.classList.toggle('active', b === btn));
+        featureCards.forEach(card => {
+          const match = cat === 'all' || card.dataset.category === cat;
+          card.classList.toggle('is-hidden', !match);
+          if (match) card.classList.add('revealed');
+        });
       });
     });
   }

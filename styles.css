@@ -19,7 +19,7 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
-html{background:var(--ink);scroll-behavior:smooth}
+html{background:var(--ink);scroll-behavior:smooth;overflow-x:clip}
 body{
   background:var(--ink);
   color:var(--bone);
@@ -27,8 +27,9 @@ body{
   font-weight:300;
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  overflow-x:clip;
 }
+body.nav-open{overflow:hidden}
 ::selection{background:var(--brass);color:var(--ink)}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--brass);outline-offset:4px}
@@ -47,17 +48,19 @@ img{display:block;max-width:100%}
   transform-origin:0 50%;transform:scaleX(0);
 }
 
-/* Navigation */
+/* Navigation — backdrop-filter lives on ::before so position:fixed .nav-links is never clipped */
 .nav{
   position:fixed;inset:0 0 auto 0;z-index:45;
   display:flex;align-items:center;justify-content:space-between;gap:24px;
   padding:18px var(--g);
   color:var(--bone);
-  background:linear-gradient(to bottom,rgba(11,10,9,.82),rgba(11,10,9,.45) 70%,transparent);
+  border-bottom:1px solid rgba(196,160,106,.1);
+}
+.nav::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to bottom,rgba(11,10,9,.86),rgba(11,10,9,.52) 75%,rgba(11,10,9,.2));
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(196,160,106,.1);
-  transition:background .4s,border-color .4s;
 }
 .mark{
   font-family:var(--display);font-size:1.08rem;letter-spacing:.42em;
@@ -353,6 +356,20 @@ footer{
   display:grid;grid-template-columns:1.05fr 1fr;
   gap:clamp(36px,6vw,90px);align-items:center;
 }
+.collection-feature>*,.timeline-item>*,.visit-grid>*{min-width:0}
+.collection-feature.is-hidden{display:none}
+.collection-filters{
+  display:flex;flex-wrap:wrap;gap:10px;margin-bottom:-24px;
+}
+.filter-btn{
+  font-family:var(--body);font-size:.7rem;font-weight:500;letter-spacing:.24em;
+  text-transform:uppercase;padding:11px 20px;border:1px solid rgba(196,160,106,.3);
+  background:transparent;color:var(--mute);cursor:pointer;
+  transition:background .3s,color .3s,border-color .3s;
+}
+.filter-btn:hover,.filter-btn.active{
+  background:var(--brass);color:var(--ink);border-color:var(--brass);
+}
 .collection-feature.reverse .collection-feature-image{order:2}
 .collection-feature.reverse .collection-feature-info{order:1}
 
@@ -508,7 +525,7 @@ footer{
 .location-coords{display:flex;flex-direction:column;gap:6px}
 .location-label{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--brass)}
 .location-value{font-family:var(--display);font-size:clamp(1.3rem,2.4vw,1.9rem);color:var(--bone)}
-.atelier-footer{padding-top:clamp(30px,5vw,60px)}
+.atelier-footer{padding:clamp(30px,5vw,60px) var(--g) 0;background:var(--ink);overflow:hidden}
 
 /* =========================================================
    Scroll Reveal Animations & Metallic Shimmer
@@ -535,6 +552,7 @@ footer{
    Responsive Breakpoints
    ========================================================= */
 @media (max-width:960px){
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
   .collection-feature{grid-template-columns:1fr}
   .collection-feature.reverse .collection-feature-image,
   .collection-feature.reverse .collection-feature-info{order:initial}
@@ -543,36 +561,45 @@ footer{
 }
 
 @media (max-width:760px){
-  .nav{padding:15px var(--g)}
+  .nav{padding:14px var(--g)}
   .mark{font-size:.92rem;letter-spacing:.34em}
   .hamburger{display:flex}
   .nav-links{
-    position:fixed;inset:0;background:rgba(11,10,9,.97);
-    backdrop-filter:blur(18px);
-    flex-direction:column;justify-content:center;gap:28px;
-    opacity:0;pointer-events:none;transition:opacity .35s ease;z-index:47;
+    position:fixed;inset:0;width:100vw;height:100dvh;
+    background:rgba(11,10,9,.97);
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    flex-direction:column;justify-content:center;align-items:center;gap:28px;
+    opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .35s ease,visibility .35s ease;z-index:47;
   }
-  body.nav-open .nav-links{opacity:1;pointer-events:auto}
+  body.nav-open .nav-links{opacity:1;visibility:visible;pointer-events:auto}
   .nav-link{font-size:1.15rem;letter-spacing:.34em}
-  .chap-stage{top:68px;font-size:.62rem}
-  .scrim{display:block}
-  .panels{align-items:end;padding-bottom:8svh}
-  .panel{max-width:none}
-  h1{font-size:clamp(2.5rem,12.5vw,3.8rem)}
-  h2{font-size:clamp(1.9rem,8.4vw,2.7rem)}
-  .eyebrow{margin-bottom:16px}
-  .panel p{margin-top:16px;font-size:.96rem;line-height:1.6}
-  .stats{margin-top:20px;padding-top:16px}
+  .chap-stage{top:64px;font-size:.6rem;padding:4px 12px}
+  .scrim{display:block;background:linear-gradient(to top,var(--scrim) 0%,var(--scrim) 44%,transparent 72%)}
+  .panels{align-items:end;padding-bottom:6svh}
+  .panel{max-width:none;width:100%}
+  h1{font-size:clamp(2.2rem,10.5vw,3.4rem)}
+  h2{font-size:clamp(1.75rem,7.8vw,2.5rem)}
+  .eyebrow{margin-bottom:12px;font-size:.66rem}
+  .panel p{margin-top:12px;font-size:.92rem;line-height:1.55}
+  .stats{margin-top:16px;padding-top:14px;flex-wrap:wrap;gap:14px 24px}
+  .stats b{font-size:1.7rem}
   .cue{display:none}
   .cards,.details,.gallery-grid,.visit-details,.location-card,.heritage-values-grid{grid-template-columns:1fr}
+  .spec-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 16px}
+  .spec-value{font-size:.88rem}
   .gallery-item-wide{aspect-ratio:4/3}
-  .timeline-line{left:14px}
-  .timeline-item{grid-template-columns:1fr;padding-left:36px}
-  .timeline-year{text-align:left;padding:0;font-size:2.4rem}
+  .timeline-line{left:12px}
+  .timeline-item{grid-template-columns:1fr;gap:14px;padding-left:32px}
+  .timeline-year{text-align:left;padding:0;font-size:2.2rem}
+  .timeline-content{padding:20px}
   .timeline-item:nth-child(odd) .timeline-year,
   .timeline-item:nth-child(odd) .timeline-content{order:initial;padding-left:0}
-  .actions{margin-top:22px}
-  .btn{padding:15px 20px}
+  .reveal-left,.reveal-right{transform:translateY(24px)}
+  .word{font-size:clamp(1.6rem,9.2vw,4.5rem);letter-spacing:.26em;margin-top:48px}
+  .form-group input,.form-group select,.form-group textarea{font-size:1rem}
+  .actions{margin-top:18px}
+  .btn{padding:14px 18px;font-size:.7rem}
 }
 
 @media (prefers-reduced-motion:reduce){
